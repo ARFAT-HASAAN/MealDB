@@ -1,24 +1,52 @@
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Home from './/Components//Home/Home'
+import Header from './Components/Header/Header';
+import Resturen from './Components/Resturent/Resturen';
+
+
+// import route 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Notfound from './Components/notefoun/Notfound';
+import Mealdb from './Components/mealdb/Mealdb';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <>
+      <Router>
+        <Header></Header>
+        <Switch>
+          <Route exact path='/home'>
+            <Home></Home>
+          </Route>
+          <Route exact path='/resturent'>
+            <Resturen />
+          </Route>
+          <Route exact path='/resturent/:id'>
+            <Mealdb></Mealdb>
+          </Route>
+          <Route exact path='*'>
+            <Notfound></Notfound>
+          </Route>
+        </Switch>
+      </Router>
+    </>
+
+
+    // 
+    // <Header></Header>
+    // 
+    // 
+
+
   );
 }
 
